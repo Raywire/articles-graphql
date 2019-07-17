@@ -47,4 +47,8 @@ type Mutation {
     email: String!
     password: String!
   ): String @field(resolver: "AuthMutator@resolve")
+
+  createArticle(title: String!, content: String!): Article
+    @field(resolver: "ArticleMutator@create")
+    @middleware(checks: ["auth:api"])
 }
